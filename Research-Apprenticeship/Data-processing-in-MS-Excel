@@ -1,0 +1,59 @@
+STEP 1
+seperate everything via text-to-collumns
+
+STEP 2
+ADD COLLUMN duplicate test
+=IF(COUNT.IF($C$2:$C$1596;C2)>1;1;0)
+
+STEP 3
+sorty by duplicate test descendent order
+
+STEP 4
+sorty by "duplicate test" descendent order,  # i.e., (1-->0)
+         "datetime"       ascendent  order   # i.e., (old-->new)
+
+STEP 4
+delete duplicate cases by "cryptIP"
+
+STEP 5
+double check with two examples
+
+"datetime"            "cryptID"
+3-8-2018 21:07:25     967XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+3-8-2018 21:32:34     967XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+3-8-2018 21:14:45     8b3XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+3-8-2018 21:21:39     8b3XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+STEP 6
+delete "duplicate test" and replace with "id"
+
+STEP 7
+merge "id" with "input"
+
+STEP 8
+delete cryptIP
+
+STEP 9
+save input seperately from other data
+
+STEP 10
+transform via text-to-collumns function
+
+STEP 11 give collumn names
+
+STEP 12 run following VBA code to get rid of collumns without name
+
+'delete collumns without name
+
+Sub DeleteBlankCells()
+Range("A1:GP1").Select '//range of the dataset
+Selection.SpecialCells(xlCellTypeBlanks).Select
+Selection.EntireColumn.Delete
+End Sub
+
+STEP 13
+check dataset again
+
+STEP 14
+some people did not answer all questions. this is problematic for the analysis
+apply casewise deletion (OR use R to handle this problem --> see future code)
